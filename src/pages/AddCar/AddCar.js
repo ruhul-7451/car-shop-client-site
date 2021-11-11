@@ -1,4 +1,5 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
@@ -7,7 +8,17 @@ const AddCar = () => {
     const onSubmit = data => {
         reset();
         console.log(data)
+        axios.post('http://localhost:5000/cars', { data })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     };
+
+
+
     return (
         <div className="col-lg-8 shadow mx-auto p-5 m-5 bg-white rounded">
             <h2 className="text-center text-primary">Add a Car Details</h2> <hr />
@@ -29,6 +40,7 @@ const AddCar = () => {
                             <option>Kia</option>
                             <option>Mercedes</option>
                             <option>BMW</option>
+                            <option>Mitsubishi</option>
                         </Form.Select>
                     </Form.Group>
 

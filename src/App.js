@@ -11,6 +11,8 @@ import NotFound from './pages/NotFound/NotFound';
 import Reviews from './pages/Reviews/Reviews';
 import Login from './pages/shared/Login/Login';
 import AddCar from './pages/AddCar/AddCar';
+import ShowCars from './pages/ShowCars/ShowCars';
+import ShowCarDetails from './pages/ShowCars/SingleCar/ShowCarDetails/ShowCarDetails';
 
 function App() {
   return (
@@ -23,6 +25,12 @@ function App() {
           </Route>
           <Route path="/home">
             <Homepage></Homepage>
+          </Route>
+          <Route path="/buyCars">
+            <ShowCars></ShowCars>
+          </Route>
+          <Route path="/showCar/:carId">
+            <ShowCarDetails></ShowCarDetails>
           </Route>
           <Route path="/reviews">
             <Reviews></Reviews>
