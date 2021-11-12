@@ -1,16 +1,17 @@
 import React from 'react';
+import Contacts from '../Contacts/Contacts';
 import Reviews from '../Reviews/Reviews';
 import Banner from '../shared/Banner/Banner';
-import ShowCars from '../ShowCars/ShowCars';
+import DisplayCars from '../shared/DisplayCars/DisplayCars';
 
 const Homepage = () => {
     return (
         <div>
             <Banner></Banner>
-            <h2>Buy Cars</h2>
-            <ShowCars></ShowCars>
+            <DisplayCars></DisplayCars>
             <Reviews></Reviews>
             <h2>Book Test Drive</h2>
+            <Contacts></Contacts>
         </div>
     );
 };
