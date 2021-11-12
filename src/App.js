@@ -14,6 +14,7 @@ import AddCar from './pages/AddCar/AddCar';
 import ShowCars from './pages/ShowCars/ShowCars';
 import ShowCarDetails from './pages/ShowCars/SingleCar/ShowCarDetails/ShowCarDetails';
 import AuthProvider from './AuthProvider/AuthProvider';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -31,15 +32,15 @@ function App() {
             <Route path="/buyCars">
               <ShowCars></ShowCars>
             </Route>
-            <Route path="/showCar/:carId">
+            <PrivateRoute path="/showCar/:carId">
               <ShowCarDetails></ShowCarDetails>
-            </Route>
+            </PrivateRoute>
             <Route path="/reviews">
               <Reviews></Reviews>
             </Route>
-            <Route path="/addCar">
+            <PrivateRoute path="/addCar">
               <AddCar></AddCar>
-            </Route>
+            </PrivateRoute>
             <Route path="/login">
               <Login></Login>
             </Route>

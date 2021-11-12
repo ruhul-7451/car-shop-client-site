@@ -4,19 +4,33 @@ import { useForm } from 'react-hook-form';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useAuth from '../../../Hooks/useAuth';
+import { useHistory, useLocation } from 'react-router';
 const googleLogo = <FontAwesomeIcon icon={faGoogle} />
 
 const Login = () => {
     const [isChecked, setIsChecked] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
     const { register, handleSubmit, reset } = useForm();
+    const history = useHistory();
+    const location = useLocation();
+    const redirectUrl = location.state?.from || "/home"
 
-    const { googleSignIn, registerUser, signInUser } = useAuth();
+    const { user, googleSignIn, registerUser, signInUser, UpdateUserProfile, setDataLoading, setDisplayName } = useAuth();
 
     const onSubmit = data => {
         console.log(data);
         if (isChecked) {
-            signInUser(data.email, data.password);
+            signInUser(data.email, data.password)
+                .then((userCredential) => {
+                    // Signed in 
+                    console.log(userCredential.user);
+                    history.push(redirectUrl);
+                    // ...
+                })
+                .catch((error) => {
+                    setErrorMsg(error.message);
+                })
+                .finally(() => setDataLoading(false))
         }
         else {
             if (data.password !== data.password2) {
@@ -25,7 +39,16 @@ const Login = () => {
             }
             reset();
             setErrorMsg('');
-            registerUser(data.name, data.email, data.password);
+            registerUser(data.email, data.password)
+                .then((userCredential) => {
+                    // Signed in 
+                    history.push(redirectUrl);
+                    console.log(userCredential.user);
+                    UpdateUserProfile(data.name);
+                })
+                .catch((error) => {
+                    setErrorMsg(error.message);
+                }).finally(() => setDataLoading(false))
         }
 
     };
@@ -36,7 +59,17 @@ const Login = () => {
     };
 
     const handleGoogleSignIn = () => {
-        googleSignIn();
+        googleSignIn()
+            .then((result) => {
+                console.log(result.user);
+                history.push(redirectUrl);
+            }).catch((error) => {
+                setErrorMsg(error.message)
+                console.log(errorMsg);
+            })
+            .finally(() => {
+                setDataLoading(false)
+            })
     }
 
     return (
