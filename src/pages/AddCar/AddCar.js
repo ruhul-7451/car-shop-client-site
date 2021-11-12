@@ -1,13 +1,12 @@
+import React from 'react';
 import axios from 'axios';
-import React, { useEffect } from 'react';
-import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { Button, Col, Form, Row } from 'react-bootstrap';
 
 const AddCar = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         reset();
-        console.log(data)
         axios.post('http://localhost:5000/cars', { data })
             .then(function (response) {
                 console.log(response);
@@ -16,8 +15,6 @@ const AddCar = () => {
                 console.log(error);
             });
     };
-
-
 
     return (
         <div className="col-lg-8 shadow mx-auto p-5 m-5 bg-white rounded">

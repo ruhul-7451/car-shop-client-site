@@ -29,14 +29,11 @@ const useFirebase = () => {
                     // Profile updated!
                     // ...
                 }).catch((error) => {
-                    // An error occurred
-                    // ...
+                    setErrorMsg(error.message);
                 });
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // ..
+                setErrorMsg(error.message);
             });
     }
 
@@ -48,13 +45,12 @@ const useFirebase = () => {
                 // ...
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                setErrorMsg(error.message);
             });
     }
 
     const logOut = () => {
-        signOut(auth).then(() => { }).catch((error) => { });
+        signOut(auth).then(() => { }).catch((error) => { setErrorMsg(error.message); });
     }
 
     useEffect(() => {

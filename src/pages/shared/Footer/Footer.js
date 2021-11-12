@@ -35,8 +35,8 @@ const Footer = () => {
                         <h5>Subscribe Newsletter</h5>
                         <Form className=" mx-auto mt-3">
                             <Form.Control type="email" placeholder="Enter email" />
-                            <Button className="w-100 my-1" variant="info">
-                                Submit
+                            <Button className="w-100 my-1" variant="warning">
+                                Subscribe
                             </Button>
                         </Form>
                         <div className="d-flex align-items-center justify-content-center">
