@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import useFirebase from '../../../Hooks/useFirebase';
+import useAuth from '../../../Hooks/useAuth';
 const googleLogo = <FontAwesomeIcon icon={faGoogle} />
 
 const Login = () => {
@@ -11,7 +11,7 @@ const Login = () => {
     const [errorMsg, setErrorMsg] = useState('');
     const { register, handleSubmit, reset } = useForm();
 
-    const { googleSignIn, registerUser, signInUser } = useFirebase();
+    const { googleSignIn, registerUser, signInUser } = useAuth();
 
     const onSubmit = data => {
         console.log(data);
