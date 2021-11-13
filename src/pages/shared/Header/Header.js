@@ -16,13 +16,7 @@ const Header = () => {
                             <Nav.Link as={Link} to='/allCars'>All Cars</Nav.Link>
                             <Nav.Link as={Link} to='/reviews'>Reviews</Nav.Link>
                             <Nav.Link as={Link} to='/contacts'>Contacts</Nav.Link>
-                            <NavDropdown title="More">
-                                <NavDropdown.Item as={Link} to="/addCar">Add a Car</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/">Another action</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                            </NavDropdown>
+                            {user.email && <Nav.Link as={Link} to='/dashboard'>Dashboard</Nav.Link>}
                         </Nav>
                         <Nav>
                             <Navbar.Text className="mx-3 text-info">

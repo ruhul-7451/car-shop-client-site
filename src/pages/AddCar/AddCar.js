@@ -17,16 +17,16 @@ const AddCar = () => {
     };
 
     return (
-        <div className="col-lg-8 shadow mx-auto p-5 m-5 bg-white rounded">
-            <h2 className="text-center text-primary">Add a Car Details</h2> <hr />
-            <Form onSubmit={handleSubmit(onSubmit)}>
+        <div className="col-lg-8 mx-auto shadow p-5 mx-5 bg-white rounded">
+            <h2 className="text-center text-danger">Add a Car Details</h2> <hr />
+            <Form onSubmit={handleSubmit(onSubmit)} className="fw-bold">
                 <Row className="mb-3">
-                    <Form.Group as={Col} xs="auto">
+                    <Form.Group as={Col} sm={5} xs="auto">
                         <Form.Label>Model Name</Form.Label>
                         <Form.Control placeholder="Model Name" {...register("modelName")} />
                     </Form.Group>
 
-                    <Form.Group as={Col} xs="auto">
+                    <Form.Group as={Col} sm={3} xs="auto">
                         <Form.Label>Manufacturer</Form.Label>
                         <Form.Select defaultValue="Select" {...register("manufacturer")}>
                             <option>Toyota</option>
@@ -41,12 +41,13 @@ const AddCar = () => {
                         </Form.Select>
                     </Form.Group>
 
-                    <Form.Group as={Col} xs="auto">
+                    <Form.Group as={Col} sm={4} xs="auto">
                         <Form.Label>Production Year</Form.Label>
                         <Form.Control placeholder="Year" {...register("year")} />
                     </Form.Group>
-
-                    <Form.Group as={Col} xs="auto">
+                </Row>
+                <Row className="mb-3">
+                    <Form.Group as={Col} sm={3} xs="auto">
                         <Form.Label>Engine Capacity (cc)</Form.Label>
                         <Form.Select defaultValue="Select" {...register("engineCapacity")}>
                             <option>1000</option>
@@ -58,23 +59,24 @@ const AddCar = () => {
                         </Form.Select>
                     </Form.Group>
 
-                    <Form.Group as={Col} xs="auto">
+                    <Form.Group as={Col} sm={4} xs="auto">
                         <Form.Label>Transmission Type</Form.Label>
                         <Form.Select defaultValue="Select"{...register("transmission")}>
                             <option>Automatic</option>
                             <option>Manual</option>
                         </Form.Select>
                     </Form.Group>
-                </Row>
-                <Row className="mb-3">
-                    <Form.Group as={Col} xs="auto" lg={7}>
-                        <Form.Label>Car Image</Form.Label>
-                        <Form.Control placeholder="Enter Image URL" {...register("carImg")} />
-                    </Form.Group>
 
-                    <Form.Group as={Col} xs="auto">
+                    <Form.Group as={Col} sm={5} xs="auto">
                         <Form.Label>Price</Form.Label>
                         <Form.Control placeholder="Price" {...register("price")} />
+                    </Form.Group>
+                </Row>
+
+                <Row className="mb-3">
+                    <Form.Group as={Col} xs="auto" sm={12}>
+                        <Form.Label>Car Image</Form.Label>
+                        <Form.Control placeholder="Enter Image URL" {...register("carImg")} />
                     </Form.Group>
                 </Row>
 

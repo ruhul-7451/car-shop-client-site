@@ -17,6 +17,8 @@ import AuthProvider from './AuthProvider/AuthProvider';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Contacts from './pages/Contacts/Contacts';
 import BookNow from './pages/BookNow/BookNow';
+import Dashboard from './pages/Dashboard/Dashboard';
+import PostReview from './pages/PostReview/PostReview';
 
 function App() {
   return (
@@ -46,7 +48,12 @@ function App() {
             <PrivateRoute path="/booking/:carName">
               <BookNow></BookNow>
             </PrivateRoute>
-
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/writeReview">
+              <PostReview></PostReview>
+            </PrivateRoute>
             <PrivateRoute path="/addCar">
               <AddCar></AddCar>
             </PrivateRoute>
