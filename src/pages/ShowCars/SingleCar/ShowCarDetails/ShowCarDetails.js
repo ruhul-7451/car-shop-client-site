@@ -15,8 +15,11 @@ const ShowCarDetails = () => {
 
     const { carImg, description, engineCapacity, manufacturer, modelName, price, transmission, year } = singleCarDetails;
 
+    const handleBooking = (car) => {
+        history.push(`/booking/${car.modelName}`);
+    }
     const handleGoHome = () => {
-        history.push('/home')
+        history.push('/home');
     }
 
     return (
@@ -46,7 +49,7 @@ const ShowCarDetails = () => {
                         </Accordion>
                     </Card.Body>
                     <Card.Body className="d-flex justify-content-between align-items-center">
-                        <Button variant="warning">Book Test Drive</Button>
+                        <Button onClick={() => handleBooking(singleCarDetails)} variant="warning">Book Test Drive</Button>
                         <Button onClick={handleGoHome} variant="danger">Go Home</Button>
                     </Card.Body>
                 </Card>

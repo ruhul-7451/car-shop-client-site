@@ -16,6 +16,7 @@ import ShowCarDetails from './pages/ShowCars/SingleCar/ShowCarDetails/ShowCarDet
 import AuthProvider from './AuthProvider/AuthProvider';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Contacts from './pages/Contacts/Contacts';
+import BookNow from './pages/BookNow/BookNow';
 
 function App() {
   return (
@@ -42,6 +43,10 @@ function App() {
             <Route path="/contacts">
               <Contacts></Contacts>
             </Route>
+            <PrivateRoute path="/booking/:carName">
+              <BookNow></BookNow>
+            </PrivateRoute>
+
             <PrivateRoute path="/addCar">
               <AddCar></AddCar>
             </PrivateRoute>
