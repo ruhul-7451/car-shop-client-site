@@ -1,16 +1,18 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
+import Rating from 'react-rating';
 
 const UserReview = ({ user }) => {
-    const { name, email, phone } = user
+    console.log(user);
+    const { userName, rates, reviewTitle, description } = user.data
     return (
         <Col>
             <Card>
-                {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
                 <Card.Body>
-                    <Card.Title>{name}</Card.Title>
-                    <Card.Text>{email}</Card.Text>
-                    <Card.Text>{phone}</Card.Text>
+                    <Card.Title>{reviewTitle}</Card.Title>
+                    <Rating placeholderRating={rates} readonly />
+                    <Card.Text className="fw-bold">Review By: {userName}</Card.Text>
+                    <Card.Text>{description}</Card.Text>
                 </Card.Body>
             </Card>
         </Col>

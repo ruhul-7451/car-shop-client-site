@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -10,10 +11,17 @@ const BookNow = () => {
     const { register, handleSubmit, reset } = useForm();
     const { carName } = useParams()
     const onSubmit = data => {
+        axios.post('http://localhost:5000/bookings', data)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         reset();
         alert('Congratulations! Your have requested a schedule.');
         history.push('/home');
-        console.log(data);
+        console.log(data.value);
     }
     const handleGoHome = () => {
         const confirm = window.confirm('Are you sure? \nYou want to skip booking!')
