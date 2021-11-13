@@ -15,7 +15,7 @@ const Login = () => {
     const location = useLocation();
     const redirectUrl = location.state?.from || "/home"
 
-    const { googleSignIn, registerUser, signInUser, UpdateUserProfile, setDataLoading } = useAuth();
+    const { user, googleSignIn, registerUser, signInUser, UpdateUserProfile, setDataLoading, saveUser, saveGoogleUser } = useAuth();
 
     const onSubmit = data => {
         console.log(data);
@@ -41,6 +41,8 @@ const Login = () => {
             setErrorMsg('');
             registerUser(data.email, data.password)
                 .then((userCredential) => {
+                    //Save User
+                    saveUser(data.email, data.name)
                     // Signed in 
                     history.push(redirectUrl);
                     console.log(userCredential.user);
@@ -62,6 +64,8 @@ const Login = () => {
         googleSignIn()
             .then((result) => {
                 console.log(result.user);
+                const user = result.user
+                saveGoogleUser(user.email, user.displayName)
                 history.push(redirectUrl);
             }).catch((error) => {
                 setErrorMsg(error.message)

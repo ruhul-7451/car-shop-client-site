@@ -1,6 +1,7 @@
 import firebaseInitialization from "../Firebase/Firebase.init";
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 firebaseInitialization();
 
@@ -48,6 +49,27 @@ const useFirebase = () => {
             .finally(setDataLoading(false))
     }
 
+    const saveUser = (email, displayName) => {
+        const user = { email, displayName }
+        axios.post('http://localhost:5000/users', user)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+    const saveGoogleUser = (email, displayName) => {
+        const user = { email, displayName }
+        axios.put('http://localhost:5000/users', user)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, user => {
             user ? setUser(user) : setUser({})
@@ -62,6 +84,8 @@ const useFirebase = () => {
         errorMsg,
         dataLoading,
         displayName,
+        saveUser,
+        saveGoogleUser,
         googleSignIn,
         registerUser,
         setDisplayName,

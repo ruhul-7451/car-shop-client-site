@@ -1,18 +1,34 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
 
 const MakeAdmin = () => {
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const [email, setEmail] = useState();
+
+    const handleEmail = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const handleMakeAdmin = () => {
+        const user = { email }
+        axios.put('http://localhost:5000/users/admin', user)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+
     return (
-        <Form onSubmit={handleSubmit(onSubmit)} className="mx-auto">
+        <Form className="mx-auto">
             <Row className="align-items-center">
                 <Col sm={5} xs="auto">
-                    <Form.Control placeholder="Enter email" type="email" {...register("email")} />
+                    <Form.Control onBlur={handleEmail} placeholder="Enter email" type="email" />
                 </Col>
                 <Col xs="auto" className="my-1">
-                    <Button variant="danger" type="submit">Make Admin</Button>
+                    <Button variant="danger" onClick={handleMakeAdmin}>Make Admin</Button>
                 </Col>
             </Row>
         </Form>
