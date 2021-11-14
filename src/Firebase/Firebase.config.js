@@ -1,9 +1,9 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyA40NzBTPdypJQmxgwjV-cLtmoL_-cSLvw",
-    authDomain: "car-bazar-client.firebaseapp.com",
-    projectId: "car-bazar-client",
-    storageBucket: "car-bazar-client.appspot.com",
-    messagingSenderId: "1031493328735",
-    appId: "1:1031493328735:web:47071d7d78d80dd72aa0ea"
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID
 };
 export default firebaseConfig;
