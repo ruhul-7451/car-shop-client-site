@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -8,6 +9,13 @@ const Contacts = () => {
     const history = useHistory()
     const onSubmit = data => {
         console.log(data);
+        axios.post('https://fierce-basin-08872.herokuapp.com/messages', data)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         reset();
         alert('We will be contacting you soon!');
         history.push('/home');

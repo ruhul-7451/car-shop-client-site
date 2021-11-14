@@ -2,8 +2,10 @@ import React from 'react';
 import { Col, ListGroup, Row, Tab } from 'react-bootstrap';
 import useAuth from '../../Hooks/useAuth';
 import AddCar from '../AddCar/AddCar';
+import ReceivedMessages from '../Contacts/ReceivedMessages/ReceivedMessages';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageBookings from '../ManageBookings/ManageBookings';
+import ManageCars from '../ManageCars/ManageCars';
 import MyBookings from '../MyBookings/MyBookings';
 import Payment from '../Payment/Payment';
 import PostReview from '../PostReview/PostReview';
@@ -39,8 +41,14 @@ const Dashboard = () => {
                                 <ListGroup.Item action href="#addCar">
                                     Add a Car
                                 </ListGroup.Item>
+                                <ListGroup.Item action href="#manageCars">
+                                    Manage Cars
+                                </ListGroup.Item>
                                 <ListGroup.Item action href="#manageOrders">
                                     Manage Bookings
+                                </ListGroup.Item>
+                                <ListGroup.Item action href="#receivedMessages">
+                                    Received Messages
                                 </ListGroup.Item>
                             </ListGroup>}
                             <ListGroup.Item className="text-danger" onClick={confirmLogout} action href="#logout">
@@ -65,8 +73,14 @@ const Dashboard = () => {
                             <Tab.Pane eventKey="#addCar">
                                 <AddCar />
                             </Tab.Pane>
+                            <Tab.Pane eventKey="#manageCars">
+                                <ManageCars></ManageCars>
+                            </Tab.Pane>
                             <Tab.Pane eventKey="#manageOrders">
                                 <ManageBookings></ManageBookings>
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="#receivedMessages">
+                                <ReceivedMessages></ReceivedMessages>
                             </Tab.Pane>
                         </Tab.Content>
                     </Col>
