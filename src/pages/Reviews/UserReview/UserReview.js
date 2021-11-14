@@ -3,7 +3,6 @@ import { Card, Col } from 'react-bootstrap';
 import Rating from 'react-rating';
 
 const UserReview = ({ user }) => {
-    console.log(user);
     const { userName, rates, reviewTitle, description } = user.data
     return (
         <Col>

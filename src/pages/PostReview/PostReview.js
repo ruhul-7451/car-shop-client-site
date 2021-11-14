@@ -10,7 +10,7 @@ const PostReview = () => {
     const onSubmit = data => {
         console.log(data);
         reset();
-        axios.post('http://localhost:5000/reviews', { data })
+        axios.post('https://fierce-basin-08872.herokuapp.com/reviews', { data })
             .then(function (response) {
                 console.log(response);
             })

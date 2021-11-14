@@ -9,7 +9,7 @@ const Booked = ({ booking }) => {
     const { _id, address, city, date, email, model, name, phone, status } = booking;
 
     const handleDelete = (id) => {
-        const url = `http://localhost:5000/bookings/find/${id}`
+        const url = `https://fierce-basin-08872.herokuapp.com/bookings/find/${id}`
         const action = window.confirm('You are deleting one of your booking')
         if (action) {
             axios.delete(url).then(function (response) {

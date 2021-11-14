@@ -13,7 +13,7 @@ const MakeAdmin = () => {
 
     const handleMakeAdmin = () => {
         const user = { email }
-        axios.put('http://localhost:5000/users/admin', user)
+        axios.put('https://fierce-basin-08872.herokuapp.com/users/admin', user)
             .then(function (response) {
                 console.log(response);
                 const { data } = response;

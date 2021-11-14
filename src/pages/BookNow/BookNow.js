@@ -11,7 +11,7 @@ const BookNow = () => {
     const { register, handleSubmit, reset } = useForm();
     const { carName } = useParams()
     const onSubmit = data => {
-        axios.post('http://localhost:5000/bookings', data)
+        axios.post('https://fierce-basin-08872.herokuapp.com/bookings', data)
             .then(function (response) {
                 console.log(response);
             })

@@ -7,7 +7,7 @@ const AddCar = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         reset();
-        axios.post('http://localhost:5000/cars', { data })
+        axios.post('https://fierce-basin-08872.herokuapp.com/cars', { data })
             .then(function (response) {
                 console.log(response);
             })

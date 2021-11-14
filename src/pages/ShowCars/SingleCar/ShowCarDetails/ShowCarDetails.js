@@ -7,7 +7,7 @@ const ShowCarDetails = () => {
     const history = useHistory();
     const [singleCarDetails, setSingleCarDetails] = useState({});
     useEffect(() => {
-        const url = `http://localhost:5000/showCar/${carId}`
+        const url = `https://fierce-basin-08872.herokuapp.com/showCar/${carId}`
         fetch(url)
             .then(res => res.json())
             .then(data => setSingleCarDetails(data.data))

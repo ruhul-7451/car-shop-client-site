@@ -15,7 +15,7 @@ const Login = () => {
     const location = useLocation();
     const redirectUrl = location.state?.from || "/home"
 
-    const { user, googleSignIn, registerUser, signInUser, UpdateUserProfile, setDataLoading, saveUser, saveGoogleUser } = useAuth();
+    const { googleSignIn, registerUser, signInUser, UpdateUserProfile, setDataLoading, saveUser, saveGoogleUser } = useAuth();
 
     const onSubmit = data => {
         console.log(data);

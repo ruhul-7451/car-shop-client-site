@@ -5,7 +5,7 @@ import ManageBooked from './ManageBooked/ManageBooked';
 const ManageBookings = () => {
     const [allBookings, setAllBookings] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/bookings')
+        fetch('https://fierce-basin-08872.herokuapp.com/bookings')
             .then(res => res.json())
             .then(data => setAllBookings(data))
     }, [])

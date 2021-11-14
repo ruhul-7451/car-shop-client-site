@@ -7,7 +7,7 @@ const MyBookings = () => {
     const { user } = useAuth();
     const [bookings, setBookings] = useState([]);
     useEffect(() => {
-        const url = `http://localhost:5000/bookings/search?email=${user.email}`
+        const url = `https://fierce-basin-08872.herokuapp.com/bookings/search?email=${user.email}`
         fetch(url)
             .then(res => res.json())
             .then(data => setBookings(data))

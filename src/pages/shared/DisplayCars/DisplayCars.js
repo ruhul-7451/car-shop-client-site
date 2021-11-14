@@ -5,7 +5,7 @@ import SingleCar from '../../ShowCars/SingleCar/SingleCar';
 const DisplayCars = () => {
     const [displayCars, setDisplayCars] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/cars')
+        fetch('https://fierce-basin-08872.herokuapp.com/cars')
             .then(res => res.json())
             .then(data => setDisplayCars(data.slice(0, 6)))
     }, [])

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
@@ -10,7 +10,7 @@ const confirmLogo = <FontAwesomeIcon icon={faCheckCircle} />
 const ManageBooked = ({ booking }) => {
     const { _id, address, city, date, email, model, name, phone, status } = booking
     const handleDelete = (id) => {
-        const url = `http://localhost:5000/bookings/find/${id}`
+        const url = `https://fierce-basin-08872.herokuapp.com/bookings/find/${id}`
         const action = window.confirm('You are deleting one of your booking')
         if (action) {
             axios.delete(url)
@@ -23,7 +23,7 @@ const ManageBooked = ({ booking }) => {
     }
 
     const handleConfirmation = (id) => {
-        const url = `http://localhost:5000/bookings/find/${id}`
+        const url = `https://fierce-basin-08872.herokuapp.com/bookings/find/${id}`
         axios.put(url).then(function (response) {
             if (response.data.modifiedCount > 0) {
                 alert('Booking Confirmed Successfully')

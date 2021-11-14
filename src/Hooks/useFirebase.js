@@ -53,7 +53,7 @@ const useFirebase = () => {
 
     const saveUser = (email, displayName) => {
         const user = { email, displayName }
-        axios.post('http://localhost:5000/users', user)
+        axios.post('https://fierce-basin-08872.herokuapp.com/users', user)
             .then(function (response) {
                 console.log(response);
             })
@@ -63,7 +63,7 @@ const useFirebase = () => {
     }
     const saveGoogleUser = (email, displayName) => {
         const user = { email, displayName }
-        axios.put('http://localhost:5000/users', user)
+        axios.put('https://fierce-basin-08872.herokuapp.com/users', user)
             .then(function (response) {
                 console.log(response);
             })
@@ -73,7 +73,7 @@ const useFirebase = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://fierce-basin-08872.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
     }, [user.email])
