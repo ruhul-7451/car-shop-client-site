@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
-import useAuth from '../../Hooks/useAuth';
-import Booked from './Booked/Booked';
+import ManageBooked from './ManageBooked/ManageBooked';
 
-const MyBookings = () => {
-    const { user } = useAuth();
-    const [bookings, setBookings] = useState([]);
+const ManageBookings = () => {
+    const [allBookings, setAllBookings] = useState([]);
     useEffect(() => {
-        const url = `http://localhost:5000/bookings/search?email=${user.email}`
-        fetch(url)
+        fetch('http://localhost:5000/bookings')
             .then(res => res.json())
-            .then(data => setBookings(data))
-    }, [user.email])
-    console.log(bookings);
+            .then(data => setAllBookings(data))
+    }, [])
     return (
         <div>
-            <h3 className="mb-3 bg-light p-3 rounded text-dark">You scheduled {bookings.length} cars</h3>
+            <h3 className="mb-3 bg-light p-3 rounded text-dark">Total Placed Bookings: {allBookings.length}</h3>
             <Table className="  bg-white" striped bordered hover responsive>
                 <thead>
                     <tr>
@@ -28,14 +24,15 @@ const MyBookings = () => {
                         <th>Address</th>
                         <th>Status</th>
                         <th>Action</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 {
-                    bookings.map(booking => <Booked key={booking._id} booking={booking}></Booked>)
+                    allBookings.map(booking => <ManageBooked key={booking._id} booking={booking}></ManageBooked>)
                 }
             </Table>
         </div>
     );
 };
 
-export default MyBookings;
+export default ManageBookings;

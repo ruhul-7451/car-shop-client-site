@@ -3,6 +3,7 @@ import { Col, ListGroup, Row, Tab } from 'react-bootstrap';
 import useAuth from '../../Hooks/useAuth';
 import AddCar from '../AddCar/AddCar';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import ManageBookings from '../ManageBookings/ManageBookings';
 import MyBookings from '../MyBookings/MyBookings';
 import PostReview from '../PostReview/PostReview';
 
@@ -58,7 +59,7 @@ const Dashboard = () => {
                                 <AddCar />
                             </Tab.Pane>
                             <Tab.Pane eventKey="#manageOrders">
-
+                                <ManageBookings></ManageBookings>
                             </Tab.Pane>
                         </Tab.Content>
                     </Col>

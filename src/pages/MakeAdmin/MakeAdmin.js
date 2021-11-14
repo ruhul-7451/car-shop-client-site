@@ -29,9 +29,7 @@ const MakeAdmin = () => {
             .catch(function (error) {
                 console.log(error);
             });
-
     }
-
 
     return (
         <Form className="mx-auto">
