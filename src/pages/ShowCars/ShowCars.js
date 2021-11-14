@@ -14,7 +14,7 @@ const ShowCars = () => {
     }
     return (
         <div className="p-5">
-            <h1 className="bg-info text-white text-center p-3 rounded">We have {cars.length} car's in ready stock!</h1>
+            <h1 className="bg-info text-white text-center p-3 rounded">We have {cars.length} car's ready in stock!</h1>
             <Row xs={1} md={2} lg={3} className="g-4">
                 {
                     cars.map(car => <SingleCar

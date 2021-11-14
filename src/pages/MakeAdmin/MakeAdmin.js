@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import { Alert, Button, Col, Form, Row } from 'react-bootstrap';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState();
+    const [success, setSuccess] = useState(false);
+    const [failed, setFailed] = useState(false);
 
     const handleEmail = (e) => {
         setEmail(e.target.value)
@@ -14,10 +16,20 @@ const MakeAdmin = () => {
         axios.put('http://localhost:5000/users/admin', user)
             .then(function (response) {
                 console.log(response);
+                const { data } = response;
+                if (data.modifiedCount === 1) {
+                    setEmail('')
+                    setSuccess(true)
+                }
+                if (data.matchedCount === 0) {
+                    setEmail('')
+                    setFailed(true)
+                }
             })
             .catch(function (error) {
                 console.log(error);
             });
+
     }
 
 
@@ -31,6 +43,8 @@ const MakeAdmin = () => {
                     <Button variant="danger" onClick={handleMakeAdmin}>Make Admin</Button>
                 </Col>
             </Row>
+            {success && <Alert variant='success'>Admin Added Successfully</Alert>}
+            {failed && <Alert variant='danger'>User not found</Alert>}
         </Form>
     );
 };

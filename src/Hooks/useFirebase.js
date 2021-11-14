@@ -12,6 +12,7 @@ const useFirebase = () => {
     const [dataLoading, setDataLoading] = useState(true);
     const [displayName, setDisplayName] = useState('')
     const googleProvider = new GoogleAuthProvider();
+    const [admin, setAdmin] = useState(false);
 
     const googleSignIn = () => {
         setDataLoading(true);
@@ -43,6 +44,7 @@ const useFirebase = () => {
 
     const logOut = () => {
         setDataLoading(true)
+        setDisplayName('')
         signOut(auth)
             .then(() => { })
             .catch((error) => { setErrorMsg(error.message); })
@@ -71,6 +73,12 @@ const useFirebase = () => {
     }
 
     useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
+
+    useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, user => {
             user ? setUser(user) : setUser({})
             setDataLoading(false)
@@ -84,6 +92,7 @@ const useFirebase = () => {
         errorMsg,
         dataLoading,
         displayName,
+        admin,
         saveUser,
         saveGoogleUser,
         googleSignIn,
