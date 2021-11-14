@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
@@ -7,22 +7,29 @@ import axios from 'axios';
 const deleteLogo = <FontAwesomeIcon icon={faTrashAlt} />
 const confirmLogo = <FontAwesomeIcon icon={faCheckCircle} />
 
-const handleDelete = (id) => {
-    const url = `http://localhost:5000/bookings/find/${id}`
-    const action = window.confirm('You are deleting one of your booking')
-    if (action) {
-        axios.delete(url);
-    }
-    console.log(url);
-}
-
-const handleConfirmation = (id) => {
-    const url = `http://localhost:5000/bookings/find/${id}`
-    axios.put(url);
-}
-
 const ManageBooked = ({ booking }) => {
     const { _id, address, city, date, email, model, name, phone, status } = booking
+    const handleDelete = (id) => {
+        const url = `http://localhost:5000/bookings/find/${id}`
+        const action = window.confirm('You are deleting one of your booking')
+        if (action) {
+            axios.delete(url)
+                .then(function (response) {
+                    if (response.data.deletedCount > 0) {
+                        alert('Deleted Successfully')
+                    }
+                })
+        }
+    }
+
+    const handleConfirmation = (id) => {
+        const url = `http://localhost:5000/bookings/find/${id}`
+        axios.put(url).then(function (response) {
+            if (response.data.modifiedCount > 0) {
+                alert('Booking Confirmed Successfully')
+            }
+        })
+    }
     return (
         <tbody>
             <tr>

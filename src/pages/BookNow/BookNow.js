@@ -21,7 +21,6 @@ const BookNow = () => {
         reset();
         alert('Congratulations! Your have requested a schedule.');
         history.push('/home');
-        console.log(data.value);
     }
     const handleGoHome = () => {
         const confirm = window.confirm('Are you sure? \nYou want to skip booking!')

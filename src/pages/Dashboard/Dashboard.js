@@ -5,6 +5,7 @@ import AddCar from '../AddCar/AddCar';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageBookings from '../ManageBookings/ManageBookings';
 import MyBookings from '../MyBookings/MyBookings';
+import Payment from '../Payment/Payment';
 import PostReview from '../PostReview/PostReview';
 
 const Dashboard = () => {
@@ -24,6 +25,9 @@ const Dashboard = () => {
                         <ListGroup variant="flush">
                             <ListGroup.Item action href="#myBookings">
                                 My Bookings
+                            </ListGroup.Item>
+                            <ListGroup.Item action href="#payment">
+                                Make a Payment
                             </ListGroup.Item>
                             <ListGroup.Item action href="#writeReview">
                                 Write a Review
@@ -48,6 +52,9 @@ const Dashboard = () => {
                         <Tab.Content>
                             <Tab.Pane eventKey="#myBookings">
                                 <MyBookings />
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="#payment">
+                                <Payment />
                             </Tab.Pane>
                             <Tab.Pane eventKey="#writeReview">
                                 <PostReview />

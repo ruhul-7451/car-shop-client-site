@@ -12,7 +12,7 @@ const MyBookings = () => {
             .then(res => res.json())
             .then(data => setBookings(data))
     }, [user.email])
-    console.log(bookings);
+
     return (
         <div>
             <h3 className="mb-3 bg-light p-3 rounded text-dark">You scheduled {bookings.length} cars</h3>
